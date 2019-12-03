@@ -31,12 +31,12 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course` (
-  `cno` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cname` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cno` varchar(30)  NOT NULL,
+  `cname` varchar(60)  DEFAULT NULL,
   `ctime` int(11) DEFAULT NULL,
   `ccredit` int(11) DEFAULT NULL,
   PRIMARY KEY (`cno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,14 +57,14 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
-  `sno` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sname` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ssex` enum('male','female') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sno` varchar(30)   NOT NULL,
+  `sname` varchar(45)   DEFAULT NULL,
+  `ssex` enum('male','female')   DEFAULT NULL,
   `sage` int(11) DEFAULT NULL,
-  `sdept` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sdept` varchar(45)  DEFAULT NULL,
   PRIMARY KEY (`sno`),
   CONSTRAINT `CONSTRAINT_1` CHECK (`sage` between 18 and 22)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,14 +87,14 @@ DROP TABLE IF EXISTS `sc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sc` (
-  `sno` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cno` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `grade` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sno` varchar(30)   NOT NULL,
+  `cno` varchar(20)   DEFAULT NULL,
+  `grade` varchar(45)   DEFAULT NULL,
   KEY `course_num` (`cno`),
   KEY `sno` (`sno`),
   CONSTRAINT `course_num` FOREIGN KEY (`cno`) REFERENCES `course` (`cno`),
   CONSTRAINT `sc_ibfk_1` FOREIGN KEY (`sno`) REFERENCES `student` (`sno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT  ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
